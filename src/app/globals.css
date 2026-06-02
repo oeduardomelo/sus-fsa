@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Mantemos as variáveis para você usar quando quiser */
+  --color-sus: #0057b8;
+  --color-sus-dark: #004494;
+  --color-sus-light: #e6eff8;
+
+  --color-apple-gray: #F2F2F7;
+  --color-apple-label: #1C1C1E;
+  --color-apple-secondary: #8E8E93;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-apple-gray);
+    color: var(--color-apple-label);
+    -webkit-font-smoothing: antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Removi o rounded-apple e o backdrop fixo para você controlar no HTML */
+  .apple-card {
+    @apply bg-white shadow-sm ;
+  }
+
+  /* Botão agora aceita qualquer rounded que você colocar no código */
+  .btn-sus {
+    @apply bg-sus text-white font-semibold 
+           hover:bg-sus-dark active:scale-95 transition-all duration-200 
+           shadow-lg shadow-sus/20 flex items-center justify-center gap-2;
+  }
+
+  /* Input limpo: sem arredondamento forçado no CSS */
+  .apple-input {
+    @apply border border-gray-200 outline-none transition-all duration-200;
+  }
 }
