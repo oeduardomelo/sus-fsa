@@ -12,6 +12,12 @@ export default function RootLayout({ children }) {
   const publicRoutes = ["/login"]; 
 
   useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
+  }, []);
+
+  useEffect(() => {
     // 1. Busca a chave no localStorage
     const user = localStorage.getItem("usuario_logado");
     const isPublicRoute = publicRoutes.includes(pathname);
@@ -29,7 +35,18 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body 
+      <head>
+        <meta name="application-name" content="SUS +Ágil Feira" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="SUS+Ágil" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#0057b8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/icon.svg" />
+      </head>
+      <body
         className="min-h-screen bg-apple-gray text-apple-label antialiased selection:bg-sus/20 selection:text-sus text-left"
       >
         {/* TRANCA VISUAL: Se estiver tentando acessar área restrita sem login, 

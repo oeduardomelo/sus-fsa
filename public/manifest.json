@@ -1,0 +1,19 @@
+{
+  "name": "SUS +Ágil Feira",
+  "short_name": "SUS+Ágil",
+  "description": "Sistema de Gestão de Saúde Pública — Feira de Santana, BA",
+  "start_url": "/login",
+  "display": "standalone",
+  "background_color": "#F2F2F7",
+  "theme_color": "#0057b8",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
